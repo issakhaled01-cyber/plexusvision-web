@@ -8,8 +8,8 @@ const FEATURED = {
   title: "RizmiMind",
   domain: "Education",
   summary:
-    "Socratic AI tutor built for Ontario students from Grade 1 to 8. Guides learners to answers through questions rather than giving them away — with a parent dashboard for progress tracking.",
-  metric: "Ontario G1–8 curriculum",
+    "Socratic AI tutor built for Ontario students from Grade 9 to 12. Guides learners to answers through questions rather than giving them away — with a parent dashboard for progress tracking.",
+  metric: "Ontario G9–12 curriculum",
   stack: ["Claude AI", "Next.js", "Supabase", "Stripe"],
   image: null,
   href: "https://rizmimind.ca",
