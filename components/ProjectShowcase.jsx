@@ -26,7 +26,7 @@ const PROJECTS = [
       "Drone-mounted vision system that inspects turbine blades for damage without grounding the turbine.",
     metric: "99.9% uptime",
     stack: ["Computer vision", "Edge deployment", "Kubernetes"],
-    image: "https://www.plexusvision.com/wind-turbines-blue-sky.jpg",
+    image: "/Wind turbine inspection.png",
   },
   {
     id: "medvision",
@@ -36,7 +36,7 @@ const PROJECTS = [
       "Retinal and radiology imaging analysis that flags findings for clinician review, cutting time-to-read.",
     metric: "60% faster reads",
     stack: ["Medical imaging", "Deep learning", "Clinical workflow"],
-    image: "https://www.plexusvision.com/medical-brain-scan-imaging.jpg",
+    image: "/im1.png",
   },
   {
     id: "financebot",
@@ -46,7 +46,7 @@ const PROJECTS = [
       "Automated financial document parsing that classifies risk and routes exceptions to analysts.",
     metric: "95% classification accuracy",
     stack: ["NLP", "Document AI", "Automation"],
-    image: "https://www.plexusvision.com/laptop-dashboard-analytics-financial.jpg",
+    image: "/Document risk classification.png",
   },
   {
     id: "security-monitor",
@@ -56,7 +56,7 @@ const PROJECTS = [
       "Anomaly detection across network traffic, tuned to cut false positives without missing real threats.",
     metric: "85% fewer false positives",
     stack: ["Anomaly detection", "Streaming inference", "MLOps"],
-    image: "https://www.plexusvision.com/cybersecurity-circuit-board.jpg",
+    image: "/Real-time threat detection.png",
   },
   {
     id: "retailflow",
@@ -66,7 +66,7 @@ const PROJECTS = [
       "Inventory forecasting model that learns seasonal and regional demand patterns per SKU.",
     metric: "35% lower inventory cost",
     stack: ["Time series", "Forecasting", "Predictive analytics"],
-    image: "https://www.plexusvision.com/predictive-analysis-dashboard.png",
+    image: "/Demand forcasting.png",
   },
   {
     id: "logistics",
@@ -76,7 +76,7 @@ const PROJECTS = [
       "Supply-chain optimization engine balancing delivery cost against service-level targets.",
     metric: "25% cost reduction",
     stack: ["Optimization", "Logistics", "Cloud infrastructure"],
-    image: "https://www.plexusvision.com/logistics-warehouse-optimization.png",
+    image: "/Route and load optimization.png",
   },
 ];
 
