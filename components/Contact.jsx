@@ -61,7 +61,7 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 space-y-3 font-mono text-[13px] text-[#9AA2AD]">
-              <ContactLine label="Email" value="hello@plexusvision.com" href="mailto:hello@plexusvision.com" />
+              <ContactLine label="Email" value="info@plexusvision.com" href="mailto:info@plexusvision.com" />
               <ContactLine label="Based in" value="Mississauga, Ontario, Canada" />
               <ContactLine label="Response time" value="Within 2 business days" />
             </div>
