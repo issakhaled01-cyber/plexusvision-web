@@ -3,6 +3,19 @@
 import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 
+const FEATURED = {
+  id: "rizmimind",
+  title: "RizmiMind",
+  domain: "Education",
+  summary:
+    "Socratic AI tutor built for Ontario students from Grade 1 to 8. Guides learners to answers through questions rather than giving them away — with a parent dashboard for progress tracking.",
+  metric: "Ontario G1–8 curriculum",
+  stack: ["Claude AI", "Next.js", "Supabase", "Stripe"],
+  image: null,
+  href: "https://rizmimind.ca",
+  featured: true,
+};
+
 const PROJECTS = [
   {
     id: "wind-turbine",
@@ -66,12 +79,14 @@ const PROJECTS = [
   },
 ];
 
-const FILTERS = ["All", "Healthcare", "Industrial", "Finance", "Security", "Retail"];
+const FILTERS = ["All", "Education", "Healthcare", "Industrial", "Finance", "Security", "Retail"];
 
 export default function ProjectShowcase() {
   const [filter, setFilter] = useState("All");
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  const showFeatured = filter === "All" || filter === "Education";
 
   const filtered = useMemo(
     () =>
@@ -125,13 +140,101 @@ export default function ProjectShowcase() {
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
+            {showFeatured && (
+              <FeaturedCard key="rizmimind" project={FEATURED} inView={inView} />
+            )}
             {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} inView={inView} />
+              <ProjectCard key={project.id} project={project} index={showFeatured ? i + 1 : i} inView={inView} />
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function FeaturedCard({ project, inView }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.a
+      href={project.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      layout
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#1B1F27] bg-[#0D1117] p-8 cursor-pointer"
+    >
+      {/* Animated glow on hover */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 rounded-2xl"
+        animate={{ opacity: hovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{ background: "radial-gradient(ellipse at 30% 40%, rgba(94,255,184,0.07) 0%, transparent 70%)" }}
+      />
+
+      {/* Bounding frame */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="pointer-events-none absolute inset-3 border border-[#5EFFB8]/40"
+          >
+            <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#5EFFB8]" />
+            <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#5EFFB8]" />
+            <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#5EFFB8]" />
+            <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#5EFFB8]" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-10">
+        {/* Label row */}
+        <div className="mb-6 flex items-center justify-between">
+          <span className="rounded-full border border-[#5EFFB8]/40 px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-[#5EFFB8]">
+            LIVE PRODUCT
+          </span>
+          <span className="font-mono text-[10px] tracking-[0.12em] text-[#5B6270]">
+            {project.domain.toUpperCase()} · {project.metric}
+          </span>
+        </div>
+
+        <h3 className="font-display text-[1.8rem] font-medium tracking-tight text-[#E8EAED] transition-colors group-hover:text-[#5EFFB8]">
+          {project.title}
+        </h3>
+        <p className="mt-3 font-sans text-[14px] leading-relaxed text-[#9AA2AD]">
+          {project.summary}
+        </p>
+      </div>
+
+      <div className="relative z-10 mt-8 flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-wrap gap-1.5">
+          {project.stack.map((s) => (
+            <span
+              key={s}
+              className="rounded-full border border-[#2A2F38] px-2.5 py-1 font-mono text-[10px] text-[#9AA2AD]"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+        <motion.span
+          animate={{ x: hovered ? 4 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="font-mono text-[12px] tracking-wide text-[#5EFFB8]"
+        >
+          rizmimind.ca →
+        </motion.span>
+      </div>
+    </motion.a>
   );
 }
 

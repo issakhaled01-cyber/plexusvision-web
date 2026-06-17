@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import PlexusLogo from "@/components/PlexusLogo";
 
 const GRID_COLS = 26;
 const GRID_ROWS = 16;
@@ -168,8 +169,11 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#0A0C10_85%)]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
-        <span className="font-display text-[15px] font-medium tracking-tight text-[#E8EAED]">
-          Pleaxus<span className="text-[#5EFFB8]">Vision</span>
+        <span className="flex items-center gap-2.5">
+          <PlexusLogo size={28} />
+          <span className="font-display text-[15px] font-medium tracking-tight text-[#E8EAED]">
+            Pleaxus<span className="text-[#5EFFB8]">Vision</span>
+          </span>
         </span>
         <nav className="hidden items-center gap-9 font-sans text-[13px] text-[#9AA2AD] sm:flex">
           <a href="#work" className="transition-colors hover:text-[#E8EAED]">
