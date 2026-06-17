@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import PlexusLogo from "@/components/PlexusLogo";
+import Image from "next/image";
 
 const GRID_COLS = 26;
 const GRID_ROWS = 16;
@@ -170,7 +170,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
         <span className="flex items-center gap-2.5">
-          <PlexusLogo size={28} />
+          <Image src="/plexusvision-logo.png" alt="PlexusVision" width={32} height={32} />
           <span className="font-display text-[15px] font-medium tracking-tight text-[#E8EAED]">
             Pleaxus<span className="text-[#5EFFB8]">Vision</span>
           </span>

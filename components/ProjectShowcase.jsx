@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const FEATURED = {
   id: "rizmimind",
@@ -207,9 +208,13 @@ function FeaturedCard({ project, inView }) {
           </span>
         </div>
 
-        <h3 className="font-display text-[1.8rem] font-medium tracking-tight text-[#E8EAED] transition-colors group-hover:text-[#5EFFB8]">
-          {project.title}
-        </h3>
+        <Image
+          src="/rizmimind-logo.png"
+          alt="RizmiMind"
+          width={220}
+          height={60}
+          className="mb-4 object-contain"
+        />
         <p className="mt-3 font-sans text-[14px] leading-relaxed text-[#9AA2AD]">
           {project.summary}
         </p>
