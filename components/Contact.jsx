@@ -18,13 +18,12 @@ export default function Contact() {
     e.preventDefault();
     setStatus("submitting");
     try {
-      // Replace with your real endpoint, e.g.:
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(form),
-      // });
-      await new Promise((resolve) => setTimeout(resolve, 600)); // placeholder
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
