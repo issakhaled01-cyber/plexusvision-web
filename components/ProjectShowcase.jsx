@@ -263,6 +263,7 @@ function ProjectCard({ project, index, inView }) {
         animate={{ scale: hovered ? 1.06 : 1, filter: hovered ? "brightness(0.55)" : "brightness(0.85)" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="absolute inset-0 h-full w-full object-cover"
+        onError={(e) => { e.target.style.display = "none"; }}
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0C10] via-[#0A0C10]/10 to-transparent" />
