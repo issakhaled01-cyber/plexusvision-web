@@ -139,8 +139,8 @@ export default function Hero() {
       {/* Nav */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
         <span className="flex items-center gap-2.5">
-          <Image src="/plexusvision-logo.png" alt="PlexusVision" width={32} height={32} />
-          <span className="font-display text-[15px] font-medium tracking-tight text-[#111827]">
+          <Image src="/plexusvision-logo-2.png" alt="PlexusVision" width={36} height={36} />
+          <span className="font-display text-[20px] font-semibold tracking-tight text-[#111827]">
             Pleaxus<span className="text-[#059669]">Vision</span>
           </span>
         </span>
@@ -161,7 +161,7 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-5 font-mono text-[11px] tracking-[0.22em] text-[#059669]/90"
         >
-          [ COMPUTER VISION &amp; APPLIED AI ]
+          [ ADVANCED AI SOLUTIONS FOR MODERN ENTERPRISES ]
         </motion.p>
 
         <motion.h1
