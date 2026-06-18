@@ -10,7 +10,7 @@ const FEATURED = {
   domain: "Education",
   summary:
     "Socratic AI tutor built for Ontario students from Grade 9 to 12. Guides learners to answers through questions rather than giving them away — with a parent dashboard for progress tracking.",
-  metric: "Ontario G9–12 curriculum",
+  metric: "Ontario G9-12 curriculum",
   stack: ["Claude AI", "Next.js", "Supabase", "Stripe"],
   image: null,
   href: "https://rizmimind.ca",
@@ -90,10 +90,7 @@ export default function ProjectShowcase() {
   const showFeatured = filter === "All" || filter === "Education";
 
   const filtered = useMemo(
-    () =>
-      filter === "All"
-        ? PROJECTS
-        : PROJECTS.filter((p) => p.domain === filter),
+    () => filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.domain === filter),
     [filter]
   );
 
@@ -101,7 +98,7 @@ export default function ProjectShowcase() {
     <section
       id="work"
       ref={sectionRef}
-      className="relative bg-[#0A0C10] px-6 py-24 sm:px-10 sm:py-32"
+      className="relative bg-[#F8FAFC] px-6 py-24 sm:px-10 sm:py-32"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -111,10 +108,10 @@ export default function ProjectShowcase() {
           className="mb-12 flex flex-col gap-6 sm:mb-16 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
-            <p className="mb-3 font-mono text-[11px] tracking-[0.22em] text-[#5EFFB8]/90">
+            <p className="mb-3 font-mono text-[11px] tracking-[0.22em] text-[#059669]/90">
               [ SELECTED WORK ]
             </p>
-            <h2 className="font-display text-[2rem] font-medium tracking-tight text-[#E8EAED] sm:text-[2.6rem]">
+            <h2 className="font-display text-[2rem] font-medium tracking-tight text-[#111827] sm:text-[2.6rem]">
               Systems we&rsquo;ve shipped.
             </h2>
           </div>
@@ -126,8 +123,8 @@ export default function ProjectShowcase() {
                 onClick={() => setFilter(f)}
                 className={`rounded-full border px-4 py-1.5 font-mono text-[11px] tracking-wide transition-colors ${
                   filter === f
-                    ? "border-[#5EFFB8] text-[#5EFFB8]"
-                    : "border-[#2A2F38] text-[#9AA2AD] hover:border-[#3A4250] hover:text-[#E8EAED]"
+                    ? "border-[#059669] text-[#059669]"
+                    : "border-[#D1D5DB] text-[#6B7280] hover:border-[#9CA3AF] hover:text-[#111827]"
                 }`}
               >
                 {f}
@@ -136,10 +133,7 @@ export default function ProjectShowcase() {
           </div>
         </motion.div>
 
-        <motion.div
-          layout
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <motion.div layout className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {showFeatured && (
               <FeaturedCard key="rizmimind" project={FEATURED} inView={inView} />
@@ -169,17 +163,15 @@ function FeaturedCard({ project, inView }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#1B1F27] bg-[#0D1117] p-8 cursor-pointer"
+      className="group relative col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#FFFFFF] p-8 cursor-pointer shadow-sm"
     >
-      {/* Animated glow on hover */}
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-2xl"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        style={{ background: "radial-gradient(ellipse at 30% 40%, rgba(94,255,184,0.07) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse at 30% 40%, rgba(5,150,105,0.06) 0%, transparent 70%)" }}
       />
 
-      {/* Bounding frame */}
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -187,35 +179,28 @@ function FeaturedCard({ project, inView }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-none absolute inset-3 border border-[#5EFFB8]/40"
+            className="pointer-events-none absolute inset-3 border border-[#059669]/40"
           >
-            <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#5EFFB8]" />
-            <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#5EFFB8]" />
-            <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#5EFFB8]" />
-            <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#5EFFB8]" />
+            <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#059669]" />
+            <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#059669]" />
+            <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#059669]" />
+            <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#059669]" />
           </motion.div>
         )}
       </AnimatePresence>
 
       <div className="relative z-10">
-        {/* Label row */}
         <div className="mb-6 flex items-center justify-between">
-          <span className="rounded-full border border-[#5EFFB8]/40 px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-[#5EFFB8]">
+          <span className="rounded-full border border-[#059669]/40 px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-[#059669]">
             LIVE PRODUCT
           </span>
-          <span className="font-mono text-[10px] tracking-[0.12em] text-[#5B6270]">
-            {project.domain.toUpperCase()} · {project.metric}
+          <span className="font-mono text-[10px] tracking-[0.12em] text-[#9CA3AF]">
+            {project.domain.toUpperCase()} &middot; {project.metric}
           </span>
         </div>
 
-        <Image
-          src="/rizmimind-logo.png"
-          alt="RizmiMind"
-          width={220}
-          height={60}
-          className="mb-4 object-contain"
-        />
-        <p className="mt-3 font-sans text-[14px] leading-relaxed text-[#9AA2AD]">
+        <Image src="/rizmimind-logo.png" alt="RizmiMind" width={220} height={60} className="mb-4 object-contain" />
+        <p className="mt-3 font-sans text-[14px] leading-relaxed text-[#6B7280]">
           {project.summary}
         </p>
       </div>
@@ -223,10 +208,7 @@ function FeaturedCard({ project, inView }) {
       <div className="relative z-10 mt-8 flex flex-wrap items-end justify-between gap-4">
         <div className="flex flex-wrap gap-1.5">
           {project.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-[#2A2F38] px-2.5 py-1 font-mono text-[10px] text-[#9AA2AD]"
-            >
+            <span key={s} className="rounded-full border border-[#E5E7EB] px-2.5 py-1 font-mono text-[10px] text-[#6B7280]">
               {s}
             </span>
           ))}
@@ -234,9 +216,9 @@ function FeaturedCard({ project, inView }) {
         <motion.span
           animate={{ x: hovered ? 4 : 0 }}
           transition={{ duration: 0.2 }}
-          className="font-mono text-[12px] tracking-wide text-[#5EFFB8]"
+          className="font-mono text-[12px] tracking-wide text-[#059669]"
         >
-          rizmimind.ca →
+          rizmimind.ca &rarr;
         </motion.span>
       </div>
     </motion.a>
@@ -255,18 +237,18 @@ function ProjectCard({ project, index, inView }) {
       transition={{ duration: 0.5, delay: inView ? index * 0.06 : 0, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl bg-[#13161D]"
+      className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl bg-[#F1F5F9]"
     >
       <motion.img
         src={project.image}
         alt={project.title}
-        animate={{ scale: hovered ? 1.06 : 1, filter: hovered ? "brightness(0.55)" : "brightness(0.85)" }}
+        animate={{ scale: hovered ? 1.06 : 1, filter: hovered ? "brightness(0.65)" : "brightness(0.95)" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="absolute inset-0 h-full w-full object-cover"
         onError={(e) => { e.target.style.display = "none"; }}
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0C10] via-[#0A0C10]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111827]/80 via-[#111827]/10 to-transparent" />
 
       <AnimatePresence>
         {hovered && (
@@ -275,24 +257,21 @@ function ProjectCard({ project, index, inView }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-none absolute inset-3 border border-[#5EFFB8]/60"
+            className="pointer-events-none absolute inset-3 border border-[#059669]/60"
           >
-            <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#5EFFB8]" />
-            <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#5EFFB8]" />
-            <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#5EFFB8]" />
-            <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#5EFFB8]" />
-            <span className="absolute -top-6 left-0 font-mono text-[10px] tracking-[0.16em] text-[#5EFFB8]">
-              {project.domain.toUpperCase()} · {project.metric}
+            <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#059669]" />
+            <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#059669]" />
+            <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#059669]" />
+            <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#059669]" />
+            <span className="absolute -top-6 left-0 font-mono text-[10px] tracking-[0.16em] text-[#059669]">
+              {project.domain.toUpperCase()} &middot; {project.metric}
             </span>
           </motion.div>
         )}
       </AnimatePresence>
 
       <div className="absolute inset-x-0 bottom-0 p-5">
-        <motion.p
-          animate={{ y: hovered ? -2 : 0 }}
-          className="font-display text-[1.1rem] font-medium tracking-tight text-[#E8EAED]"
-        >
+        <motion.p animate={{ y: hovered ? -2 : 0 }} className="font-display text-[1.1rem] font-medium tracking-tight text-white">
           {project.title}
         </motion.p>
 
@@ -305,15 +284,12 @@ function ProjectCard({ project, index, inView }) {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="overflow-hidden"
             >
-              <p className="mt-2 font-sans text-[13px] leading-relaxed text-[#9AA2AD]">
+              <p className="mt-2 font-sans text-[13px] leading-relaxed text-white/80">
                 {project.summary}
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {project.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-full border border-[#2A2F38] px-2.5 py-1 font-mono text-[10px] text-[#9AA2AD]"
-                  >
+                  <span key={s} className="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-white/70">
                     {s}
                   </span>
                 ))}

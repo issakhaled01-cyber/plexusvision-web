@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
@@ -23,22 +23,10 @@ function PointField({ mouseX, mouseY, prefersReducedMotion }) {
       points.push({ id: `${row}-${col}`, xPct, yPct });
     }
   }
-
   return (
-    <svg
-      className="absolute inset-0 h-full w-full"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
+    <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" aria-hidden="true">
       {points.map((p) => (
-        <Point
-          key={p.id}
-          xPct={p.xPct}
-          yPct={p.yPct}
-          mouseX={mouseX}
-          mouseY={mouseY}
-          prefersReducedMotion={prefersReducedMotion}
-        />
+        <Point key={p.id} xPct={p.xPct} yPct={p.yPct} mouseX={mouseX} mouseY={mouseY} prefersReducedMotion={prefersReducedMotion} />
       ))}
     </svg>
   );
@@ -59,13 +47,9 @@ function Point({ xPct, yPct, mouseX, mouseY, prefersReducedMotion }) {
       const py = yPct * rect.height;
       const dx = mouseX.get() - px;
       const dy = mouseY.get() - py;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      setActive(dist < 140);
+      setActive(Math.sqrt(dx * dx + dy * dy) < 140);
     }
-    return () => {
-      unsubX();
-      unsubY();
-    };
+    return () => { unsubX(); unsubY(); };
   }, [mouseX, mouseY, xPct, yPct, prefersReducedMotion]);
 
   return (
@@ -74,8 +58,8 @@ function Point({ xPct, yPct, mouseX, mouseY, prefersReducedMotion }) {
       cx={`${xPct * 100}%`}
       cy={`${yPct * 100}%`}
       r={active ? 2.2 : 1.1}
-      fill={active ? "#5EFFB8" : "#3A4250"}
-      opacity={active ? 0.95 : 0.45}
+      fill={active ? "#059669" : "#CBD5E1"}
+      opacity={active ? 0.9 : 0.5}
       style={{ transition: "r 220ms ease, fill 220ms ease, opacity 220ms ease" }}
     />
   );
@@ -84,31 +68,19 @@ function Point({ xPct, yPct, mouseX, mouseY, prefersReducedMotion }) {
 function DetectionFrame({ d, delay }) {
   return (
     <motion.div
-      className="pointer-events-none absolute border border-[#5EFFB8]/40"
-      style={{
-        left: `${d.x * 100}%`,
-        top: `${d.y * 100}%`,
-        width: `${d.w * 100}%`,
-        height: `${d.h * 100}%`,
-      }}
+      className="pointer-events-none absolute border border-[#059669]/40"
+      style={{ left: `${d.x * 100}%`, top: `${d.y * 100}%`, width: `${d.w * 100}%`, height: `${d.h * 100}%` }}
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: [0, 1, 1, 0], scale: 1 }}
-      transition={{
-        duration: 4.5,
-        delay,
-        repeat: Infinity,
-        repeatDelay: 3,
-        times: [0, 0.12, 0.82, 1],
-        ease: "easeInOut",
-      }}
+      transition={{ duration: 4.5, delay, repeat: Infinity, repeatDelay: 3, times: [0, 0.12, 0.82, 1], ease: "easeInOut" }}
     >
-      <span className="absolute -top-6 left-0 whitespace-nowrap font-mono text-[10px] tracking-[0.18em] text-[#5EFFB8]/80">
+      <span className="absolute -top-6 left-0 whitespace-nowrap font-mono text-[10px] tracking-[0.18em] text-[#059669]/80">
         {d.label} &middot; {d.confidence}%
       </span>
-      <span className="absolute -left-px -top-px h-2 w-2 border-l border-t border-[#5EFFB8]" />
-      <span className="absolute -right-px -top-px h-2 w-2 border-r border-t border-[#5EFFB8]" />
-      <span className="absolute -bottom-px -left-px h-2 w-2 border-b border-l border-[#5EFFB8]" />
-      <span className="absolute -bottom-px -right-px h-2 w-2 border-b border-r border-[#5EFFB8]" />
+      <span className="absolute -left-px -top-px h-2 w-2 border-l border-t border-[#059669]" />
+      <span className="absolute -right-px -top-px h-2 w-2 border-r border-t border-[#059669]" />
+      <span className="absolute -bottom-px -left-px h-2 w-2 border-b border-l border-[#059669]" />
+      <span className="absolute -bottom-px -right-px h-2 w-2 border-b border-r border-[#059669]" />
     </motion.div>
   );
 }
@@ -138,21 +110,17 @@ export default function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate flex min-h-[92vh] w-full flex-col overflow-hidden bg-[#0B1120]"
+      className="relative isolate flex min-h-[92vh] w-full flex-col overflow-hidden bg-[#F8FAFC]"
     >
       <div className="absolute inset-0">
-        <PointField
-          mouseX={mouseX}
-          mouseY={mouseY}
-          prefersReducedMotion={prefersReducedMotion}
-        />
+        <PointField mouseX={mouseX} mouseY={mouseY} prefersReducedMotion={prefersReducedMotion} />
       </div>
 
       {!prefersReducedMotion && (
         <motion.div
           aria-hidden="true"
-          className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#5EFFB8]/70 to-transparent"
-          style={{ boxShadow: "0 0 18px 1px rgba(94,255,184,0.35)" }}
+          className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#059669]/50 to-transparent"
+          style={{ boxShadow: "0 0 18px 1px rgba(5,150,105,0.2)" }}
           initial={{ top: "0%" }}
           animate={{ top: "100%" }}
           transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
@@ -165,38 +133,33 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B1120] via-transparent to-[#0B1120]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#0B1120_85%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#F8FAFC] via-transparent to-[#F8FAFC]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#F8FAFC_85%)]" />
 
+      {/* Nav */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
         <span className="flex items-center gap-2.5">
           <Image src="/plexusvision-logo.png" alt="PlexusVision" width={32} height={32} />
-          <span className="font-display text-[15px] font-medium tracking-tight text-[#E8EAED]">
-            Pleaxus<span className="text-[#5EFFB8]">Vision</span>
+          <span className="font-display text-[15px] font-medium tracking-tight text-[#111827]">
+            Pleaxus<span className="text-[#059669]">Vision</span>
           </span>
         </span>
-        <nav className="hidden items-center gap-9 font-sans text-[13px] text-[#9AA2AD] sm:flex">
-          <a href="#work" className="transition-colors hover:text-[#E8EAED]">
-            Work
-          </a>
-          <a href="#capabilities" className="transition-colors hover:text-[#E8EAED]">
-            Capabilities
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-[#2A2F38] px-4 py-1.5 text-[#E8EAED] transition-colors hover:border-[#5EFFB8]/50 hover:text-[#5EFFB8]"
-          >
+        <nav className="hidden items-center gap-9 font-sans text-[13px] text-[#6B7280] sm:flex">
+          <a href="#work" className="transition-colors hover:text-[#111827]">Work</a>
+          <a href="#capabilities" className="transition-colors hover:text-[#111827]">Capabilities</a>
+          <a href="#contact" className="rounded-full border border-[#D1D5DB] px-4 py-1.5 text-[#111827] transition-colors hover:border-[#059669]/60 hover:text-[#059669]">
             Start a project
           </a>
         </nav>
       </div>
 
+      {/* Hero copy */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 sm:px-10">
         <motion.p
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-5 font-mono text-[11px] tracking-[0.22em] text-[#5EFFB8]/90"
+          className="mb-5 font-mono text-[11px] tracking-[0.22em] text-[#059669]/90"
         >
           [ COMPUTER VISION &amp; APPLIED AI ]
         </motion.p>
@@ -205,23 +168,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
-          className="max-w-3xl font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight text-[#E8EAED] sm:text-[3.6rem] lg:text-[4.4rem]"
+          className="max-w-3xl font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight text-[#111827] sm:text-[3.6rem] lg:text-[4.4rem]"
         >
           See what your
           <br />
           data is actually
           <br />
-          <span className="text-[#5EFFB8]">telling you.</span>
+          <span className="text-[#059669]">telling you.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.18, ease: "easeOut" }}
-          className="mt-6 max-w-md font-sans text-[15px] leading-relaxed text-[#9AA2AD] sm:text-base"
+          className="mt-6 max-w-md font-sans text-[15px] leading-relaxed text-[#6B7280] sm:text-base"
         >
           PleaxusVision builds production computer vision and applied AI
-          systems for healthcare, industrial, and enterprise teams â€” from
+          systems for healthcare, industrial, and enterprise teams &mdash; from
           first prototype to deployed model.
         </motion.p>
 
@@ -232,18 +195,16 @@ export default function Hero() {
           className="mt-9 flex items-center gap-5"
         >
           <MagneticButton href="#work">View work</MagneticButton>
-          <a
-            href="#contact"
-            className="font-sans text-[14px] text-[#9AA2AD] underline-offset-4 transition-colors hover:text-[#E8EAED] hover:underline"
-          >
-            Start a conversation â†’
+          <a href="#contact" className="font-sans text-[14px] text-[#6B7280] underline-offset-4 transition-colors hover:text-[#111827] hover:underline">
+            Start a conversation &rarr;
           </a>
         </motion.div>
       </div>
 
+      {/* Scroll cue */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-8 sm:px-10">
-        <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.18em] text-[#5B6270]">
-          <span className="h-px w-8 bg-[#5B6270]" />
+        <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.18em] text-[#9CA3AF]">
+          <span className="h-px w-8 bg-[#9CA3AF]" />
           SCROLL
         </div>
       </div>
@@ -258,16 +219,11 @@ function MagneticButton({ href, children }) {
 
   function handleMove(e) {
     const rect = ref.current.getBoundingClientRect();
-    const relX = e.clientX - (rect.left + rect.width / 2);
-    const relY = e.clientY - (rect.top + rect.height / 2);
-    x.set(relX * 0.25);
-    y.set(relY * 0.25);
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.25);
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.25);
   }
 
-  function handleLeave() {
-    x.set(0);
-    y.set(0);
-  }
+  function handleLeave() { x.set(0); y.set(0); }
 
   return (
     <motion.a
@@ -276,14 +232,11 @@ function MagneticButton({ href, children }) {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ x, y }}
-      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#E8EAED] px-6 py-3 font-sans text-[14px] font-medium text-[#0B1120] transition-colors"
+      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#111827] px-6 py-3 font-sans text-[14px] font-medium text-white transition-colors"
     >
       <span className="relative z-10">{children}</span>
-      <span className="relative z-10 transition-transform group-hover:translate-x-1">
-        â†’
-      </span>
-      <span className="absolute inset-0 -z-0 bg-[#5EFFB8] opacity-0 transition-opacity group-hover:opacity-100" />
+      <span className="relative z-10 transition-transform group-hover:translate-x-1">&rarr;</span>
+      <span className="absolute inset-0 -z-0 bg-[#059669] opacity-0 transition-opacity group-hover:opacity-100" />
     </motion.a>
   );
 }
-

@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-[#0B1120] antialiased">{children}</body>
+      <body className="bg-[#F8FAFC] antialiased">{children}</body>
     </html>
   );
 }
