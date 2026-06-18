@@ -139,8 +139,8 @@ export default function Hero() {
       {/* Nav */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
         <span className="flex items-center gap-2.5">
-          <Image src="/plexusvision-logo-2.png" alt="PlexusVision" width={36} height={36} />
-          <span className="font-display text-[20px] font-semibold tracking-tight text-[#111827]">
+          <Image src="/plexusvision-logo-2.png" alt="PlexusVision" width={40} height={40} />
+          <span className="font-display text-[2.6rem] font-semibold tracking-tight text-[#111827]">
             Pleaxus<span className="text-[#059669]">Vision</span>
           </span>
         </span>
@@ -168,7 +168,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
-          className="max-w-3xl font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight text-[#111827] sm:text-[3.6rem] lg:text-[4.4rem]"
+          className="max-w-3xl font-display text-[2.2rem] font-medium leading-[1.05] tracking-tight text-[#111827] sm:text-[3.2rem] lg:text-[4rem]"
         >
           See what your
           <br />
