@@ -11,7 +11,7 @@ export async function POST(request) {
 
     await resend.emails.send({
       from: "PlexusVision Contact <onboarding@resend.dev>",
-      to: "kissa@plexusvision.com",
+      to: "issakhaled01@gmail.com",
       replyTo: email,
       subject: `New message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
