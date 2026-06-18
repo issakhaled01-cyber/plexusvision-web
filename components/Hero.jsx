@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
@@ -103,7 +103,7 @@ function DetectionFrame({ d, delay }) {
       }}
     >
       <span className="absolute -top-6 left-0 whitespace-nowrap font-mono text-[10px] tracking-[0.18em] text-[#5EFFB8]/80">
-        {d.label} · {d.confidence}%
+        {d.label} &middot; {d.confidence}%
       </span>
       <span className="absolute -left-px -top-px h-2 w-2 border-l border-t border-[#5EFFB8]" />
       <span className="absolute -right-px -top-px h-2 w-2 border-r border-t border-[#5EFFB8]" />
@@ -138,7 +138,7 @@ export default function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate flex min-h-[92vh] w-full flex-col overflow-hidden bg-[#0A0C10]"
+      className="relative isolate flex min-h-[92vh] w-full flex-col overflow-hidden bg-[#0B1120]"
     >
       <div className="absolute inset-0">
         <PointField
@@ -165,8 +165,8 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0A0C10] via-transparent to-[#0A0C10]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#0A0C10_85%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0B1120] via-transparent to-[#0B1120]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#0B1120_85%)]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 pt-7 sm:px-10">
         <span className="flex items-center gap-2.5">
@@ -221,7 +221,7 @@ export default function Hero() {
           className="mt-6 max-w-md font-sans text-[15px] leading-relaxed text-[#9AA2AD] sm:text-base"
         >
           PleaxusVision builds production computer vision and applied AI
-          systems for healthcare, industrial, and enterprise teams — from
+          systems for healthcare, industrial, and enterprise teams â€” from
           first prototype to deployed model.
         </motion.p>
 
@@ -236,7 +236,7 @@ export default function Hero() {
             href="#contact"
             className="font-sans text-[14px] text-[#9AA2AD] underline-offset-4 transition-colors hover:text-[#E8EAED] hover:underline"
           >
-            Start a conversation →
+            Start a conversation â†’
           </a>
         </motion.div>
       </div>
@@ -276,13 +276,14 @@ function MagneticButton({ href, children }) {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ x, y }}
-      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#E8EAED] px-6 py-3 font-sans text-[14px] font-medium text-[#0A0C10] transition-colors"
+      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#E8EAED] px-6 py-3 font-sans text-[14px] font-medium text-[#0B1120] transition-colors"
     >
       <span className="relative z-10">{children}</span>
       <span className="relative z-10 transition-transform group-hover:translate-x-1">
-        →
+        â†’
       </span>
       <span className="absolute inset-0 -z-0 bg-[#5EFFB8] opacity-0 transition-opacity group-hover:opacity-100" />
     </motion.a>
   );
 }
+

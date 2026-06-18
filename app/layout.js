@@ -1,4 +1,4 @@
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+﻿import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "PlexusVision Ltd. — Computer Vision & Applied AI",
+  title: "PlexusVision Ltd. â€” Computer Vision & Applied AI",
   description:
     "PlexusVision builds production computer vision and applied AI systems for healthcare, industrial, and enterprise teams.",
 };
@@ -34,7 +34,8 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-[#0A0C10] antialiased">{children}</body>
+      <body className="bg-[#0B1120] antialiased">{children}</body>
     </html>
   );
 }
+

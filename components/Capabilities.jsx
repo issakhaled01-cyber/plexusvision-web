@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -8,7 +8,7 @@ const CAPABILITIES = [
     index: "01",
     name: "Computer vision",
     description:
-      "Custom vision models for medical imaging, industrial inspection, and visual quality control — built from your data, not a generic API.",
+      "Custom vision models for medical imaging, industrial inspection, and visual quality control â€” built from your data, not a generic API.",
   },
   {
     index: "02",
@@ -26,7 +26,7 @@ const CAPABILITIES = [
     index: "04",
     name: "Generative AI integration",
     description:
-      "LLM and generative AI features wired into real products and workflows — with the evaluation work to know if they actually help.",
+      "LLM and generative AI features wired into real products and workflows â€” with the evaluation work to know if they actually help.",
   },
 ];
 
@@ -38,7 +38,7 @@ export default function Capabilities() {
     <section
       id="capabilities"
       ref={sectionRef}
-      className="relative bg-[#0A0C10] px-6 py-24 sm:px-10 sm:py-32"
+      className="relative bg-[#0B1120] px-6 py-24 sm:px-10 sm:py-32"
     >
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -93,3 +93,4 @@ function CapabilityRow({ cap, index, inView }) {
     </motion.div>
   );
 }
+

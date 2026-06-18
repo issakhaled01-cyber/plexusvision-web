@@ -8,7 +8,7 @@ export default function Contact() {
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | submitting | sent | error
+  const [status, setStatus] = useState("idle");
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -35,7 +35,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-[#0A0C10] px-6 py-24 sm:px-10 sm:py-32"
+      className="relative bg-[#0B1120] px-6 py-24 sm:px-10 sm:py-32"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
@@ -51,7 +51,7 @@ export default function Contact() {
               Tell us what you&rsquo;re trying to see.
             </h2>
             <p className="mt-6 max-w-md font-sans text-[15px] leading-relaxed text-[#9AA2AD]">
-              PleaxusVision Ltd. is led by Khaled Issa, Ph.D. — a computer
+              PleaxusVision Ltd. is led by Khaled Issa, Ph.D. &mdash; a computer
               vision researcher with a background spanning medical imaging
               (retinal OCT, ophthalmic imaging at Schepens Eye Research
               Institute / Harvard Medical School), enterprise AI, and a
@@ -82,21 +82,8 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <Field
-                  label="Name"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  required
-                />
-                <Field
-                  label="Email"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                />
+                <Field label="Name" name="name" value={form.name} onChange={handleChange} required />
+                <Field label="Email" name="email" type="email" value={form.email} onChange={handleChange} required />
                 <div>
                   <label
                     htmlFor="message"
@@ -119,14 +106,14 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[#E8EAED] px-6 py-3.5 font-sans text-[14px] font-medium text-[#0A0C10] transition-opacity disabled:opacity-60 sm:w-auto"
+                  className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[#E8EAED] px-6 py-3.5 font-sans text-[14px] font-medium text-[#0B1120] transition-opacity disabled:opacity-60 sm:w-auto"
                 >
                   <span className="relative z-10">
-                    {status === "submitting" ? "Sending…" : "Send message"}
+                    {status === "submitting" ? "Sending..." : "Send message"}
                   </span>
                   {status !== "submitting" && (
                     <span className="relative z-10 transition-transform group-hover:translate-x-1">
-                      →
+                      &rarr;
                     </span>
                   )}
                   <span className="absolute inset-0 -z-0 bg-[#5EFFB8] opacity-0 transition-opacity group-hover:opacity-100" />
@@ -143,7 +130,7 @@ export default function Contact() {
         </div>
 
         <div className="mt-24 flex flex-col items-center justify-between gap-4 border-t border-[#1B1F27] pt-8 font-mono text-[11px] tracking-wide text-[#5B6270] sm:flex-row">
-          <span>© {new Date().getFullYear()} PleaxusVision Ltd.</span>
+          <span>&copy; {new Date().getFullYear()} PleaxusVision Ltd.</span>
           <span>Mississauga, Ontario, Canada</span>
         </div>
       </div>
