@@ -163,7 +163,7 @@ function FeaturedCard({ project, inView }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative col-span-1 sm:col-span-2 lg:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#FFFFFF] p-8 cursor-pointer shadow-sm"
+      className="group relative aspect-[4/3] col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#FFFFFF] p-8 cursor-pointer shadow-sm"
     >
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-2xl"
