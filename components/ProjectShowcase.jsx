@@ -163,15 +163,37 @@ function FeaturedCard({ project, inView }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative aspect-[4/3] col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#FFFFFF] p-8 cursor-pointer shadow-sm"
+      className="group relative aspect-[4/3] col-span-1 cursor-pointer overflow-hidden rounded-2xl"
     >
+      {/* Gradient background */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-2xl"
-        animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        style={{ background: "radial-gradient(ellipse at 30% 40%, rgba(5,150,105,0.06) 0%, transparent 70%)" }}
+        className="absolute inset-0"
+        animate={{ scale: hovered ? 1.06 : 1, filter: hovered ? "brightness(0.65)" : "brightness(1)" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        style={{ background: "linear-gradient(135deg, #4F1D91 0%, #3730A3 50%, #1E1B4B 100%)" }}
       />
 
+      {/* Subtle noise texture overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-20"
+        style={{ backgroundImage: "radial-gradient(circle at 70% 20%, rgba(139,92,246,0.4) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(79,29,145,0.5) 0%, transparent 50%)" }}
+      />
+
+      {/* Dark gradient overlay at bottom */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111827]/80 via-[#111827]/10 to-transparent" />
+
+      {/* Logo top-left */}
+      <div className="absolute left-5 top-5 z-10">
+        <Image src="/rizmimind-logo.png" alt="RizmiMind" width={120} height={32} className="object-contain brightness-0 invert" />
+      </div>
+
+      {/* LIVE PRODUCT badge top-right */}
+      <div className="absolute right-5 top-5 z-10">
+        <span className="rounded-full border border-[#059669]/60 bg-[#111827]/40 px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-[#059669] backdrop-blur-sm">
+          LIVE PRODUCT
+        </span>
+      </div>
+
+      {/* Hover corner frame */}
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -179,47 +201,52 @@ function FeaturedCard({ project, inView }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-none absolute inset-3 border border-[#059669]/40"
+            className="pointer-events-none absolute inset-3 border border-[#059669]/60"
           >
             <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-[#059669]" />
             <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-[#059669]" />
             <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-[#059669]" />
             <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-[#059669]" />
+            <span className="absolute -top-6 left-0 font-mono text-[10px] tracking-[0.16em] text-[#059669]">
+              {project.domain.toUpperCase()} &middot; {project.metric}
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="relative z-10">
-        <div className="mb-6 flex items-center justify-between">
-          <span className="rounded-full border border-[#059669]/40 px-3 py-1 font-mono text-[10px] tracking-[0.14em] text-[#059669]">
-            LIVE PRODUCT
-          </span>
-          <span className="font-mono text-[10px] tracking-[0.12em] text-[#9CA3AF]">
-            {project.domain.toUpperCase()} &middot; {project.metric}
-          </span>
-        </div>
+      {/* Bottom content */}
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <motion.p animate={{ y: hovered ? -2 : 0 }} className="font-display text-[1.1rem] font-medium tracking-tight text-white">
+          {project.title}
+        </motion.p>
 
-        <Image src="/rizmimind-logo.png" alt="RizmiMind" width={220} height={60} className="mb-4 object-contain" />
-        <p className="mt-3 font-sans text-[14px] leading-relaxed text-[#6B7280]">
-          {project.summary}
-        </p>
-      </div>
-
-      <div className="relative z-10 mt-8 flex flex-wrap items-end justify-between gap-4">
-        <div className="flex flex-wrap gap-1.5">
-          {project.stack.map((s) => (
-            <span key={s} className="rounded-full border border-[#E5E7EB] px-2.5 py-1 font-mono text-[10px] text-[#6B7280]">
-              {s}
-            </span>
-          ))}
-        </div>
-        <motion.span
-          animate={{ x: hovered ? 4 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="font-mono text-[12px] tracking-wide text-[#059669]"
-        >
-          rizmimind.ca &rarr;
-        </motion.span>
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="overflow-hidden"
+            >
+              <p className="mt-2 font-sans text-[13px] leading-relaxed text-white/80">
+                {project.summary}
+              </p>
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-1.5">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.stack.map((s) => (
+                    <span key={s} className="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-white/70">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                <span className="font-mono text-[11px] tracking-wide text-[#059669]">
+                  rizmimind.ca &rarr;
+                </span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.a>
   );
