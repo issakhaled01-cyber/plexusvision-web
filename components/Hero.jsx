@@ -141,7 +141,7 @@ export default function Hero() {
         <span className="flex items-center gap-2.5">
           <Image src="/plexusvision-logo-2.png" alt="PlexusVision" width={40} height={40} />
           <span className="font-display text-[2.6rem] font-semibold tracking-tight text-[#111827]">
-            Pleaxus<span className="text-[#059669]">Vision</span>
+            Plexus<span className="text-[#059669]">Vision</span>
           </span>
         </span>
         <nav className="hidden items-center gap-9 font-sans text-[13px] text-[#6B7280] sm:flex">
@@ -183,7 +183,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.18, ease: "easeOut" }}
           className="mt-6 max-w-md font-sans text-[15px] leading-relaxed text-[#6B7280] sm:text-base"
         >
-          PleaxusVision builds production computer vision and applied AI
+          PlexusVision builds production computer vision and applied AI
           systems for healthcare, industrial, and enterprise teams &mdash; from
           first prototype to deployed model.
         </motion.p>
