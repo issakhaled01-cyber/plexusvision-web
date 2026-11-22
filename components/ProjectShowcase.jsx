@@ -183,7 +183,7 @@ function FeaturedCard({ project, inView }) {
 
       {/* Logo top-left */}
       <div className="absolute left-5 top-5 z-10">
-        <Image src="/rizmimind-logo.png" alt="RizmiMind" width={120} height={32} className="object-contain brightness-0 invert" />
+        <Image src="/rizmimind-logo.png" alt="RizmiMind" width={150} height={40} className="object-contain rounded-lg" />
       </div>
 
       {/* LIVE PRODUCT badge top-right */}
@@ -232,14 +232,7 @@ function FeaturedCard({ project, inView }) {
               <p className="mt-2 font-sans text-[13px] leading-relaxed text-white/80">
                 {project.summary}
               </p>
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-1.5">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((s) => (
-                    <span key={s} className="rounded-full border border-white/20 px-2.5 py-1 font-mono text-[10px] text-white/70">
-                      {s}
-                    </span>
-                  ))}
-                </div>
+              <div className="mt-3">
                 <span className="font-mono text-[11px] tracking-wide text-[#059669]">
                   rizmimind.ca &rarr;
                 </span>
